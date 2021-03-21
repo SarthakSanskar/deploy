@@ -30,6 +30,7 @@ mongoose.connect(process.env.MONGODB_URI || "mongodb+srv://Sarthak:Indore123@clu
 mongoose.Promise = global.Promise;
 
 //middlewares
+app.use(express.static('public'));
 app.use(morgan("dev"));
 app.use(bodyParser.json({limit: "10mb"}));
 app.use(cors());
