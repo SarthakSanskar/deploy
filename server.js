@@ -4,6 +4,8 @@ var bodyParser = require('body-parser');
 var cors = require('cors');
 var morgan = require('morgan');
 const fs = require('fs');
+const path = require('path');
+
 require('dotenv').config();
 // var createuser = require('./routes/auth');
 // var user = require('./routes/user');
@@ -43,7 +45,7 @@ fs.readdirSync('./routes').map((r) =>
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static(' client/build'));
   app.get('*', (req, res)=> {
-    res.send("<h1>Wrong ROute....!!!!</h1>")
+    res.sendFile(path.join(__dirname, "./client/build/index.html"));
   })
 }
 
